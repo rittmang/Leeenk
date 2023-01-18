@@ -90,7 +90,7 @@
             });
         }
         function sortLinks(customOrder, links) {
-            console.log(links);
+            // console.log(links);
             const parentContainer = document.getElementById("links");
             links = Array.from(links);
             // or use the spread operator
@@ -101,8 +101,11 @@
             }
             for (i = 0; i < links.length; i++) {
                 console.log(links[i].getAttribute("data-id"));
+                links[i].style = "border: solid #a9a9a9 2px;";
                 parentContainer.appendChild(links[i]);
             }
+            parentContainer.firstChild.style = "border: solid #1db954 2px; color:#1db954; font-weight: bolder;";
+            parentContainer.firstChild.innerHTML += `<span style="color: #1db954; font-weight: bolder;"> ↗</span>`;
 
         }
     </script>
@@ -113,19 +116,18 @@
         <div class="content">
             <img id="userPhoto" src="img/avatar.jpg" alt="User Photo">
 
-            <h1><a href="#" id="userName" rel="noopener">LINKS WITH </a></h1>
+            <h1><a href="#" id="userName" rel="noopener" target="_blank" style="font-weight: bold;">Ritom's Links</a></h1>
             <div id="links">
                 <a data-id="1" class="link" href="https://go.rightonrittman.in/converse" target="_blank"
-                    style="border: solid #1db954 2px;">Chat with me <span
-                        style="color: #1db954; font-weight: bolder;">↗</span></a>
+                    style="border: solid #1db954 2px;">Chat with me</a>
                 <a data-id="2" class="link" href="https://go.rightonrittman.in/home" target="_blank"
-                    style="border: solid #ffffff 2px;">Tech Portfolio <span
-                        style="font-size: xx-small;background-color: #1db954; padding-left:5px; padding-right:5px; border-radius: 10px; vertical-align:middle; font-weight: bold;">Hire
+                    style="border: solid #a9a9a9 2px;">Tech Portfolio <span
+                        style="font-size: xx-small;background-color: #1db954; padding-left:5px; padding-right:5px; border-radius: 10px; vertical-align:middle; font-weight: bold; color: white;">Hire
                         me</span></a>
                 <a data-id="3" class="link" href="https://go.rightonrittman.in/linkedin" target="_blank"
-                    style="border: solid #ffffff 2px;">I write on LinkedIn ✏️</a>
+                    style="border: solid #a9a9a9 2px;">I write on LinkedIn</a>
                 <a data-id="4" class="link" href="https://go.rightonrittman.in/spotify" target="_blank"
-                    style="border: solid #ffffff 2px;">Bollywood Roadtrip Playlist on Spotify 🎵</a>
+                    style="border: solid #a9a9a9 2px;">Bollywood Roadtrip Playlist on Spotify</a>
                 <!-- <a class="link" style="border: dashed gray 2px; -webkit-user-select: none; -ms-user-select: none; user-select: none;">Coming soon on Apple Music</a> -->
             </div>
 
@@ -135,18 +137,27 @@
         </div>
     </div>
     <script>
-        var val = getAllUrlParams(window.location.href).order;
-        if (val === undefined) {
-            document.getElementById("userName").innerHTML = "LINKS WITH default";
+        var val = getAllUrlParams(window.location.href).order ?? "1";
+        var incoming = getAllUrlParams(window.location.href).incoming;
+        var customOrder = val.split(",");
+        var links = document.querySelectorAll('[data-id]');
+        sortLinks(customOrder, links);
+        if (incoming === "twitter") {
+            document.getElementById("userName").innerHTML = `@rittmang` + `<svg width="1rem" height="1rem" version="1.1" viewBox="0,0,24,24" xmlns="http://www.w3.org/2000/svg" style="margin-left:0.3rem">
+<path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.998-3.818-3.998-.47 0-.92.084-1.336.25C14.818 2.415 13.51 1.5 12 1.5s-2.816.917-3.437 2.25c-.415-.165-.866-.25-1.336-.25-2.11 0-3.818 1.79-3.818 4 0 .494.083.964.237 1.4-1.272.65-2.147 2.018-2.147 3.6 0 1.495.782 2.798 1.942 3.486-.02.17-.032.34-.032.514 0 2.21 1.708 4 3.818 4 .47 0 .92-.086 1.335-.25.62 1.334 1.926 2.25 3.437 2.25 1.512 0 2.818-.916 3.437-2.25.415.163.865.248 1.336.248 2.11 0 3.818-1.79 3.818-4 0-.174-.012-.344-.033-.513 1.158-.687 1.943-1.99 1.943-3.484zm-6.616-3.334l-4.334 6.5c-.145.217-.382.334-.625.334-.143 0-.288-.04-.416-.126l-.115-.094-2.415-2.415c-.293-.293-.293-.768 0-1.06s.768-.294 1.06 0l1.77 1.767 3.825-5.74c.23-.345.696-.436 1.04-.207.346.23.44.696.21 1.04z" fill="#1da1f2"/>
+</svg>
+`;
+            document.getElementById("userName").setAttribute('href','https://twitter.com/rittmang');
         }
-        else {
-            document.getElementById("userName").innerHTML = "LINKS WITH " + val;
-            var customOrder = val.split(",");
-            var links = document.querySelectorAll('[data-id]');
-            sortLinks(customOrder, links);
+        else if (incoming === "instagram"){
+            document.getElementById("userName").innerHTML = `@monsieur_rittman`;
+            document.getElementById("userName").setAttribute('href','https://instagram.com/monsieur_rittman');
         }
-        console.log(val);
-        console.log("Executed");
+        else if (incoming === "linkedin"){
+            document.getElementById("userName").innerHTML = `Ritom Gupta`;
+            document.getElementById("userName").setAttribute('href','https://linkedin.com/in/ritomgupta');
+        }
+        // console.log("Executed");
     </script>
 </body>
 

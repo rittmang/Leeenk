@@ -5,39 +5,150 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
-    <meta name="robots" content="index,follow" />    <title>Ritom's Links</title>
+    <meta name="robots" content="index,follow" />
+    <title>Ritom's Links</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="img/avatar.jpg" type="image/x-icon"/>
+    <link rel="icon" href="img/avatar.jpg" type="image/x-icon" />
     <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
         })(window, document, "clarity", "script", "exce0rnzcp");
+    </script>
+    <script>
+        function getAllUrlParams(url) {
+
+            // get query string from url (optional) or window
+            var queryString = url ? url.split('?')[1] : window.location.search.slice(1);
+
+            // we'll store the parameters here
+            var obj = {};
+
+            // if query string exists
+            if (queryString) {
+
+                // stuff after # is not part of query string, so get rid of it
+                queryString = queryString.split('#')[0];
+
+                // split our query string into its component parts
+                var arr = queryString.split('&');
+
+                for (var i = 0; i < arr.length; i++) {
+                    // separate the keys and the values
+                    var a = arr[i].split('=');
+
+                    // set parameter name and value (use 'true' if empty)
+                    var paramName = a[0];
+                    var paramValue = typeof (a[1]) === 'undefined' ? true : a[1];
+
+                    // (optional) keep case consistent
+                    paramName = paramName.toLowerCase();
+                    if (typeof paramValue === 'string') paramValue = paramValue.toLowerCase();
+
+                    // if the paramName ends with square brackets, e.g. colors[] or colors[2]
+                    if (paramName.match(/\[(\d+)?\]$/)) {
+
+                        // create key if it doesn't exist
+                        var key = paramName.replace(/\[(\d+)?\]/, '');
+                        if (!obj[key]) obj[key] = [];
+
+                        // if it's an indexed array e.g. colors[2]
+                        if (paramName.match(/\[\d+\]$/)) {
+                            // get the index value and add the entry at the appropriate position
+                            var index = /\[(\d+)\]/.exec(paramName)[1];
+                            obj[key][index] = paramValue;
+                        } else {
+                            // otherwise add the value to the end of the array
+                            obj[key].push(paramValue);
+                        }
+                    } else {
+                        // we're dealing with a string
+                        if (!obj[paramName]) {
+                            // if it doesn't exist, create property
+                            obj[paramName] = paramValue;
+                        } else if (obj[paramName] && typeof obj[paramName] === 'string') {
+                            // if property does exist and it's a string, convert it to an array
+                            obj[paramName] = [obj[paramName]];
+                            obj[paramName].push(paramValue);
+                        } else {
+                            // otherwise add the property
+                            obj[paramName].push(paramValue);
+                        }
+                    }
+                }
+            }
+
+            return obj;
+        }
+        const applyCustomOrder = (arr, desiredOrder) => {
+            const orderForIndexVals = desiredOrder.slice(0).reverse();
+            arr.sort((a, b) => {
+                const aIndex = -orderForIndexVals.indexOf(a.getAttribute("data-id"));
+                const bIndex = -orderForIndexVals.indexOf(b.getAttribute("data-id"));
+                return aIndex - bIndex;
+            });
+        }
+        function sortLinks(customOrder, links) {
+            console.log(links);
+            const parentContainer = document.getElementById("links");
+            links = Array.from(links);
+            // or use the spread operator
+            // links = [...links];
+            applyCustomOrder(links, customOrder);
+            while (parentContainer.firstChild) {
+                parentContainer.removeChild(parentContainer.firstChild);
+            }
+            for (i = 0; i < links.length; i++) {
+                console.log(links[i].getAttribute("data-id"));
+                parentContainer.appendChild(links[i]);
+            }
+
+        }
     </script>
 </head>
 
 <body>
     <div class="container">
-    <div class="content">
-        <img id="userPhoto" src="img/avatar.jpg" alt="User Photo">
+        <div class="content">
+            <img id="userPhoto" src="img/avatar.jpg" alt="User Photo">
 
-        <h1><a href="#" id="userName" rel="noopener">RITOM'S LINKS</a></h1>
-        <div id="links">
-            <a class="link" href="https://go.rightonrittman.in/converse" target="_blank" style="border: solid #1db954 2px;">Chat with me <span style="color: #1db954; font-weight: bolder;">↗</span></a>
-            <a class="link" href="https://go.rightonrittman.in/home" target="_blank" style="border: solid #ffffff 2px;">Tech Portfolio <span style="font-size: xx-small;background-color: #1db954; padding-left:5px; padding-right:5px; border-radius: 10px; vertical-align:middle; font-weight: bold;">Hire me</span></a>
-            <a class="link" href="https://go.rightonrittman.in/linkedin" target="_blank" style="border: solid #ffffff 2px;">I write on LinkedIn ✏️</a>
-            <a class="link" href="https://go.rightonrittman.in/spotify" target="_blank" style="border: solid #ffffff 2px;">Bollywood Roadtrip Playlist on Spotify 🎵</a>
-            <!-- <a class="link" style="border: dashed gray 2px; -webkit-user-select: none; -ms-user-select: none; user-select: none;">Coming soon on Apple Music</a> -->
+            <h1><a href="#" id="userName" rel="noopener">LINKS WITH </a></h1>
+            <div id="links">
+                <a data-id="1" class="link" href="https://go.rightonrittman.in/converse" target="_blank"
+                    style="border: solid #1db954 2px;">Chat with me <span
+                        style="color: #1db954; font-weight: bolder;">↗</span></a>
+                <a data-id="2" class="link" href="https://go.rightonrittman.in/home" target="_blank"
+                    style="border: solid #ffffff 2px;">Tech Portfolio <span
+                        style="font-size: xx-small;background-color: #1db954; padding-left:5px; padding-right:5px; border-radius: 10px; vertical-align:middle; font-weight: bold;">Hire
+                        me</span></a>
+                <a data-id="3" class="link" href="https://go.rightonrittman.in/linkedin" target="_blank"
+                    style="border: solid #ffffff 2px;">I write on LinkedIn ✏️</a>
+                <a data-id="4" class="link" href="https://go.rightonrittman.in/spotify" target="_blank"
+                    style="border: solid #ffffff 2px;">Bollywood Roadtrip Playlist on Spotify 🎵</a>
+                <!-- <a class="link" style="border: dashed gray 2px; -webkit-user-select: none; -ms-user-select: none; user-select: none;">Coming soon on Apple Music</a> -->
+            </div>
+
+            <footer>
+                ✧ Updated Jan 2023 ✧
+            </footer>
         </div>
-
-        <footer>
-            ✧ Updated Jan 2023 ✧
-        </footer>
     </div>
-</div>
-
-
+    <script>
+        var val = getAllUrlParams(window.location.href).order;
+        if (val === undefined) {
+            document.getElementById("userName").innerHTML = "LINKS WITH default";
+        }
+        else {
+            document.getElementById("userName").innerHTML = "LINKS WITH " + val;
+            var customOrder = val.split(",");
+            var links = document.querySelectorAll('[data-id]');
+            sortLinks(customOrder, links);
+        }
+        console.log(val);
+        console.log("Executed");
+    </script>
 </body>
+
 
 </html>

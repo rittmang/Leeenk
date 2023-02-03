@@ -53,6 +53,7 @@ footer{
     margin: 35px auto 20px;
     border-radius: 50%;
     border: solid var(--color) 2px;
+    filter: drop-shadow(0 0 0.55rem white);
 }
 
 #userName{

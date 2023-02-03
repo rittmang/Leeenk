@@ -7,9 +7,9 @@ if(!navigator.share){
 shareButton.addEventListener('click', async () => {
     try {
         await navigator.share({
-            title:'Check out Ritom, he awesome',
+            title:'Ritom',
             url:'https://rittmang.xyz', 
-            text:'I just checked out Ritoms profile, it seems amazing. You should take a look too!'
+            text:'Just checked out Ritom\'s profile, you should take a look too :'
         });
         console.log("Shared");
     }

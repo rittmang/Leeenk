@@ -114,9 +114,12 @@
 <body>
     <div class="container">
         <div class="content">
-            <a href=""><img id="userPhoto" src="img/avatar.jpg" alt="User Photo"></a>
+            <a id="shadow-link" href="https://go.rightonrittman.in/twitter" class="shadow"><img id="userPhoto" src="img/avatar.jpg" alt="User Photo"></a>
 
             <h1><a href="https://go.rightonrittman.in/twitter" id="userName" rel="noopener" target="_blank" style="font-weight: bold;">Ritom</a></h1>
+            <!-- <audio id="hoverSound">
+                <source src="sounds/stop-13692.mp3" type="audio/mpeg">
+            </audio> -->
             <div id="links">
                 <a data-id="1" class="link" href="https://go.rightonrittman.in/converse" target="_blank"
                     style="border: solid #1db954 2px;">Chat with me</a>
@@ -151,15 +154,18 @@
 `;
             document.getElementById("userName").setAttribute('href','https://twitter.com/intent/user?screen_name=rittmang');
             document.getElementById("userPhoto").src = 'https://pbs.twimg.com/profile_images/1538518626013450240/57wYvR2f_400x400.jpg';
+            document.getElementById("shadow-link").setAttribute('href','https://twitter.com/intent/user?screen_name=rittmang');
         }
         else if (incoming === "instagram"){
             document.getElementById("userName").innerHTML = `@monsieur_rittman`;
             document.getElementById("userName").setAttribute('href','https://instagram.com/monsieur_rittman');
+            document.getElementById("shadow-link").setAttribute('href','https://instagram.com/monsieur_rittman');
         }
         else if (incoming === "linkedin"){
             document.getElementById("userName").innerHTML = `Ritom Gupta`;
-            document.getElementById("userName").setAttribute('href','https://linkedin.com/in/ritomgupta');
+            document.getElementById("userName").setAttribute('href','https://go.rightonrittman.in/linkedin');
             document.getElementById("userPhoto").src = 'https://pbs.twimg.com/profile_images/1538518626013450240/57wYvR2f_400x400.jpg';
+            document.getElementById("shadow-link").setAttribute('href','https://go.rightonrittman.in/linkedin');
         }
         // console.log("Executed");
     </script>

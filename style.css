@@ -4,6 +4,20 @@
     --font: 'Roboto Mono', monospace;
     --background: white;
     --color: #232333;
+    /* --gradient-shadow: linear-gradient(
+		45deg,
+		#fb0094,
+		#0000ff,
+		#00ff00,
+		#ffff00,
+		#ff0000,
+		#fb0094,
+		#0000ff,
+		#00ff00,
+		#ffff00,
+		#ff0000
+	); */
+    --gradient-shadow:linear-gradient(45deg, #212121,#1d1d1d,#7f7f7f,#404040,#000000,#404040,#7f7f7f,#1d1d1d, #212121);
 }
 
 body{
@@ -50,10 +64,52 @@ footer{
     width: 96px;
     height: 96px;
     display: block;
-    margin: 35px auto 20px;
+    /* margin: 35px auto 20px; */
     border-radius: 50%;
-    border: solid var(--color) 2px;
-    filter: drop-shadow(0 0 0.55rem white);
+    /* border: solid var(--color) 2px; */
+    /* filter: drop-shadow(0 0 0.55rem white); */
+}
+.shadow {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	color: #fff;
+	text-align: center;
+	font-size: 50px;
+	font-weight: bold;
+    border-radius: 50%;
+	background: linear-gradient(0deg, #000, #262626);
+}
+.shadow:before,
+.shadow:after {
+	content: "";
+	position: absolute;
+	top: -2px;
+	left: -2px;
+	background: var(--gradient-shadow);
+	background-size: 400%;
+	width: calc(100% + 4px);
+	height: calc(100% + 4px);
+    border-radius: 50%;
+	z-index: -1;
+	animation: animate 20s linear infinite;
+}
+
+.shadow:after {
+	filter: blur(20px);
+}
+
+@keyframes animate {
+	0% {
+		background-position: 0 0;
+	}
+	50% {
+		background-position: 400% 0;
+	}
+	100% {
+		background-position: 0 0;
+	}
 }
 
 #userName{

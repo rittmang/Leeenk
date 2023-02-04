@@ -1,7 +1,7 @@
 const wcID = e => document.getElementById(e),
     wcU = encodeURIComponent(window.location.href),
     newRequest = function(e = !0) {
-        fetch("https://api.websitecarbon.com/site?url=" + wcU).then((function(e) {
+        fetch("https://api.websitecarbon.com/b?url=" + wcU).then((function(e) {
             if (!e.ok) throw Error(e);
             return e.json()
         })).then((function(n) {

@@ -117,7 +117,7 @@
                 link.style.color = pagestyle.nametext;
             })
             document.getElementById('userName').style.color = pagestyle.nametext;
-            
+
             // links[0].style="border: solid #fec525 2px; color: #fec525;";
             const parentContainer = document.getElementById("links");
             parentContainer.firstChild.style = "border: solid " + pagestyle.herolink + " 2px; color: " + pagestyle.herolink + ";";
@@ -126,6 +126,15 @@
         }
     </script>
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N43L1VT7RB"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-N43L1VT7RB');
+</script>
 
 <body>
     <div class="container">
@@ -212,7 +221,7 @@
             document.getElementById("userPhoto").src = 'https://pbs.twimg.com/profile_images/1538518626013450240/57wYvR2f_400x400.jpg';
 
         }
-        else if (incoming === 'greylock'){
+        else if (incoming === 'greylock') {
             pagestyle.background = '#ffffff';
             pagestyle.nametext = '#000000';
             pagestyle.herolink = '#000000';

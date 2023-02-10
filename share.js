@@ -7,7 +7,7 @@ if (!navigator.share) {
 shareButton.addEventListener('click', async () => {
     try {
         await navigator.share({
-            title: window.title,
+            title: 'Ritom',
             url: window.location.href,
             text: 'Just checked out Ritom\'s profile, you should take a look too :'
         });

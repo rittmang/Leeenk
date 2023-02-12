@@ -75,7 +75,7 @@ const applyCustomOrder = (arr, desiredOrder) => {
     });
 }
 
-function sortLinks(customOrder, links) {
+function sortLinks(customOrder, links, pagestyle) {
     const parentContainer = document.getElementById("links");
     links = Array.from(links);
     applyCustomOrder(links, customOrder);
@@ -84,7 +84,7 @@ function sortLinks(customOrder, links) {
     }
     for (i = 0; i < links.length; i++) {
         console.log(links[i].getAttribute("data-id"));
-        links[i].style = "border: solid #a9a9a9 2px;";
+        links[i].style = "border: solid "+pagestyle.defaultLinkColor+" 2px;";
         parentContainer.appendChild(links[i]);
     }
     parentContainer.firstChild.innerHTML += `<span id='arrowhead'> ↗</span>`;
@@ -123,7 +123,7 @@ function applyStyle(pagestyle) {
 
     // links[0].style="border: solid #fec525 2px; color: #fec525;";
     const parentContainer = document.getElementById("links");
-    parentContainer.firstChild.style = "border: solid " + pagestyle.highlightLinkColor + " 2px; color: " + pagestyle.highlightLinkColor + ";";
+    parentContainer.firstChild.style = "border: solid " + pagestyle.highlightLinkColor + " 2px; color: " + pagestyle.highlightLinkColor + "; font-weight:bolder;";
     document.getElementById('arrowhead').style = 'color: ' + pagestyle.highlightLinkColor + '; font-weight: bolder;';
     document.getElementById('label').style = 'font-size: xx-small;background-color: ' + pagestyle.labelColor + '; padding-left:5px; padding-right:5px; border-radius: 10px; vertical-align:middle; font-weight: bold; color: ' + pagestyle.labelTextColor + ';';
 }
@@ -172,7 +172,7 @@ fetch(dataUrl)
             pageElements.verified = prpData['verified'] ? prpData['verified'] : pageElements.verified;
             pageElements.branded = prpData['branded'] ? prpData['branded'] : pageElements.branded;
             updatePageElements(pageElements);
-            sortLinks(customOrder, links);
+            sortLinks(customOrder, links, pagestyle);
             applyStyle(pagestyle);
         } else {
             console.log("No PRP. Using default schemes.");

@@ -56,5 +56,23 @@
             "labelTextColor": "#ffffff"
         },
         "branded":false
+    },
+    "superbowl":{
+        "name":"Ritom 🏈",
+        "link":"https://twitter.com/intent/user?screen_name=rittmang",
+        "verified":true,
+        "colors": {
+            "background": "#192f77",
+            "allText": "#fefefe",
+            "highlightLinkColor": "#d71e3f",
+            "defaultLinkColor": "#952665",
+            "labelColor": "#d71e3f",
+            "labelTextColor": "#192f77"
+        },
+        "branded": {
+            "logo": "https://b.fssta.com/sta/super-bowl-lvii/images/sb_logo.vresize.242.110.medium.0.png",
+            "logoSize": "8",
+            "logoLink": "https://go.rightonrittman.in/superbowl-feed"
+        }
     }
 }

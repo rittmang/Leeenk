@@ -1,0 +1,60 @@
+{
+    "twitter": {
+        "name": "@rittmang",
+        "link": "https://twitter.com/intent/user?screen_name=rittmang",
+        "verified": true,
+        "photo": "https://pbs.twimg.com/profile_images/1538518626013450240/57wYvR2f_400x400.jpg",
+        "colors": {
+            "background": "#000000",
+            "allText": "#ffffff",
+            "highlightLinkColor": "#1d99e5",
+            "defaultLinkColor": "#a9a9a9",
+            "labelColor": "#1d99e5",
+            "labelTextColor": "#ffffff"
+        },
+        "branded": false
+    },
+    "instagram":{
+        "name":"@monsieur_rittman",
+        "link":"https://instagram.com/monsieur_rittman"
+    },
+    "linkedin":{
+        "name":"Ritom Gupta",
+        "link":"https://go.rightonrittman.in/linkedin",
+        "photo":"https://pbs.twimg.com/profile_images/1538518626013450240/57wYvR2f_400x400.jpg"
+    },
+    "usc": {
+        "name": "Ritom Gupta",
+        "link": "mailto:ritomgup@usc.edu",
+        "verified": false,
+        "photo": "https://pbs.twimg.com/profile_images/1538518626013450240/57wYvR2f_400x400.jpg",
+        "colors": {
+            "background": "#990001",
+            "allText": "#ffffff",
+            "highlightLinkColor": "#fecc09",
+            "defaultLinkColor": "#a9a9a9",
+            "labelColor": "#fecc09",
+            "labelTextColor": "#990001"
+        },
+        "branded": {
+            "logo": "img/usc.png",
+            "logoSize": "8",
+            "logoLink": "https://usc.edu"
+        }
+    },
+    "greylock":{
+        "name":"Ritom Gupta",
+        "link":"https://go.rightonrittman.in/home",
+        "verified":false,
+        "photo":"https://pbs.twimg.com/profile_images/1538518626013450240/57wYvR2f_400x400.jpg",
+        "colors": {
+            "background": "#ffffff",
+            "allText": "#000000",
+            "highlightLinkColor": "#000000",
+            "defaultLinkColor": "#a9a9a9",
+            "labelColor": "#a9a9a9",
+            "labelTextColor": "#ffffff"
+        },
+        "branded":false
+    }
+}

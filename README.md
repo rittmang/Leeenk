@@ -5,7 +5,7 @@
     <h2 align="center"><b>Leeenk</b></h3>
     <p align="center">A link for your personal brand.</p>
     <p align="center">
-        <a href="https://twitter.com/rittmang">
+        <a href="https://twitter.com/rittmang" target="_blank" alt="Twitter">
             <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter">
         </a>
     </p>

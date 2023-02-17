@@ -152,9 +152,13 @@ footer {
     text-decoration: none;
     color: var(--color);
     word-wrap: break-word;
-
 }
 
+.link:hover{
+    -webkit-transform: scale(1.1);
+    transform:scale(1.1);
+    -ms-transform: scale(1.1);
+}
 
 :root {
     --background: #000000;

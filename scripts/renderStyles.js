@@ -188,3 +188,17 @@ fetch(dataUrl)
     .catch(error => {
         console.error("Error fetching data:", error);
     });
+
+
+
+// document.referrer can give direct prp values based on referrer:
+/*
+    Twitter : https://t.co/
+    Instagram : https://l.instagram.com/
+    LinkedIn : https://www.linkedin.com/
+    Gmail : https://mail.google.com/
+    YouTube : https://www.youtube.com/
+    Facebook : https://l.facebook.com/
+    Reddit : https://www.reddit.com/
+    SubStack : <Newsletter URL>
+*/

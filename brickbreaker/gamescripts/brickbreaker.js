@@ -32,15 +32,16 @@ function draw() {
 
     xpos = xpos + xspeed*xdirection;
     ypos = ypos + yspeed*ydirection;
-    if(xpos >= mouseX - (50+10) && xpos <= mouseX + (50+10) || ypos == clientHeight - 10){
-        xdirection *= -1;
+    if(xpos >= mouseX - (50+10) && xpos <= mouseX + (50+10) && ypos >= clientHeight - 40){
         ydirection *= -1;
     }
     if(xpos > clientWidth - 10 || xpos < 10){
         xdirection *= -1;
+        // console.log("X boundary hit");
     }
     if(ypos > clientHeight - 10 || ypos < 10){
         ydirection *= -1;
+        // console.log("Y boundary hit");
     }   
     
     let c = color(0,204,0);

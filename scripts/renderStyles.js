@@ -202,3 +202,10 @@ fetch(dataUrl)
     Reddit : https://www.reddit.com/
     SubStack : <Newsletter URL>
 */
+
+/*
+
+Linktr.ee ld json
+<script type="application/ld+json">{"@context":"https://schema.org/","@type":"WebPage","name":"adrianbliss | Twitter, Instagram, Facebook, TikTok | Linktree","url":"https://linktr.ee/adrianbliss","sameAs":["https://twitter.com/adrianbliss","https://instagram.com/adrianbliss","https://tiktok.com/@adrianbliss","https://www.youtube.com/c/AdrianBliss","mailto:bashley@settebelloentertainment.com"],"description":"Business: bashley@settebelloentertainment.com","image":"https://d1fdloi71mui9q.cloudfront.net/7DMJETvURsK60eZoltKr_1m0eZU6nqB1A79l8","identifier":"adrianbliss","alternateName":"@adrianbliss Linktree Profile","significantLink":"https://www.halloweencostumes.com/?CouponCode=adrianbliss15&utm_source=influencer","dateCreated":1617463926000,"dateModified":1676904974000,"isPartOf":"https://linktr.ee","thumbnailUrl":"https://d1fdloi71mui9q.cloudfront.net/7DMJETvURsK60eZoltKr_1m0eZU6nqB1A79l8","genre":"comedy","keywords":"comedy, writer, arts-entertainment"}</script>
+
+*/

@@ -1,4 +1,4 @@
-const dataUrl = 'prp-data.json';
+const dataUrl = '/prp-data.json';
 
 // gets URL Parameters
 function getAllUrlParams(url) {
@@ -160,6 +160,15 @@ const pagestyle = {
     labelColor: '#1db954',
     labelTextColor: '#ffffff'
 };
+
+if(urlParams.game === 'brickbreaker'){
+    var script = document.createElement('script');
+    script.onload = function(){
+        console.log('game loaded');
+    }
+    script.src = 'scripts/renderGameMode.js';
+    document.body.appendChild(script);
+}
 
 fetch(dataUrl)
     .then(response => response.json())

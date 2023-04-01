@@ -1,0 +1,11 @@
+{
+    "brickbreaker":{
+        "gamescripts":[
+            "brickbreaker/gamescripts/bb2.js"
+        ],
+        "dependencies":[
+            "https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js",
+            "brickbreaker/gamescripts/p5.collide2d.js"
+        ]
+    }
+}

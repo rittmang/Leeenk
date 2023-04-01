@@ -7,8 +7,8 @@
     <meta charset="UTF-8">
     <meta name="robots" content="index,follow" />
     <title>Ritom</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="img/avatar.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" href="../img/avatar.jpg" type="image/x-icon" />
     <script type="text/javascript">
         (function (c, l, a, r, i, t, y) {
             c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
@@ -16,6 +16,7 @@
             y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
         })(window, document, "clarity", "script", "exce0rnzcp");
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-N43L1VT7RB"></script>
     <script>
@@ -25,11 +26,18 @@
 
         gtag('config', 'G-N43L1VT7RB');
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
     <style>
         body {
             visibility: hidden;
             opacity: 0;
+        }
+    </style>
+    <style>
+        canvas{
+            position:absolute;
+            left:0;
+            top:0;
+            z-index:-1;
         }
     </style>
 </head>
@@ -38,7 +46,7 @@
     <div class="container">
         <div class="content">
             <a id="shadow-link" href="https://go.rightonrittman.in/twitter" class="shadow"><img id="userPhoto"
-                    src="img/avatar.jpg" alt="User Photo"></a>
+                    src="../img/avatar.jpg" alt="User Photo"></a>
 
             <h1><a href="https://go.rightonrittman.in/twitter" id="userName" rel="noopener" target="_blank"
                     style="font-weight: bold;">Ritom</a></h1>
@@ -62,17 +70,12 @@
                 ↑ Share with someone ↑
             </p>
             <br />
-            <footer>
-                <p id="footer-logo"></p>
-                ✧ Updated Feb 2023 ✧
-                <br />
-                <br />
-            </footer>
         </div>
     </div>
-    <script src="scripts/renderStyles.js"></script>
-    <!-- <script src="scripts/renderGameMode.js"></script> -->
-    <script src="scripts/share.js"></script>
+    <!-- <script type="text/javascript" src="../scripts/renderStyles.js"></script> -->
+    <script src="../scripts/share.js"></script>
+    <script src="/brickbreaker/gamescripts/bb2.js"></script>
+    <script defer src="https://unpkg.com/p5.collide2d"></script>    
 </body>
 <script type="text/javascript">
     window.addEventListener('DOMContentLoaded', function () {

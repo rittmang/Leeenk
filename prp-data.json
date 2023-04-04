@@ -51,6 +51,31 @@
             "logoLink": "https://usc.edu"
         }
     },
+    "discord":{
+        "name":"@rittmang#9934",
+        "link":"https://go.rightonrittman.in/discord",
+        "verified":false,
+        "photo":"https://cdn.discordapp.com/avatars/1058285676199682118/528fcf8373cc9db5fccfcb6d81db0733.webp?size=240",
+        "colors":{
+            "background":"#313338",
+            "allText":"#ffffff",
+            "highlightLinkColor":"#5864f2",
+            "labelColor":"#5864f2"
+        }
+    },
+    "substack":{
+        "name":"Ritom Gupta",
+        "link":"https://go.rightonrittman.in/substack",
+        "verified":false,
+        "photo":"https://pbs.twimg.com/profile_images/1627417658504380416/jLinKKIE_400x400.jpg",
+        "colors":{
+            "background":"#16171e",
+            "allText":"#ffffff",
+            "highlightLinkColor":"#ff6e23",
+            "labelColor":"#ff6e23"
+        },
+        "branded":false
+    },
     "greylock":{
         "name":"Ritom Gupta",
         "link":"https://go.rightonrittman.in/home",

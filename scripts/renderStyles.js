@@ -92,6 +92,7 @@ function sortLinks(customOrder, links, pagestyle) {
 function updatePageElements(pageElements) {
     document.getElementById("userName").innerHTML = pageElements.name;//set name
     document.getElementById("userPhoto").src = pageElements.photo;//set photo
+    document.getElementById("favicon").href = pageElements.photo;//set favicon  
     // set pic and name link
     document.getElementById("shadow-link").setAttribute('href', pageElements.link);
     document.getElementById("userName").setAttribute('href', pageElements.link);

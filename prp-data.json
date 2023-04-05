@@ -33,17 +33,17 @@
         }
     },
     "usc": {
-        "name": "Ritom Gupta",
-        "link": "mailto:ritomgup@usc.edu",
+        "name": "Hey, I'm Ritom ✌🏼",
+        "link": "sms:+1213-245-6681",
         "verified": false,
         "photo": "https://pbs.twimg.com/profile_images/1627417658504380416/jLinKKIE_400x400.jpg",
         "colors": {
-            "background": "#990001",
+            "background": "#000000",
             "allText": "#ffffff",
             "highlightLinkColor": "#fecc09",
             "defaultLinkColor": "#a9a9a9",
             "labelColor": "#fecc09",
-            "labelTextColor": "#990001"
+            "labelTextColor": "#000000"
         },
         "branded": {
             "logo": "img/usc.png",

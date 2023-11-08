@@ -14,22 +14,37 @@
         },
         "branded": false
     },
-    "instagram":{
-        "name":"@rittmang_",
-        "link":"https://go.rightonrittman.in/instagram",
-        "colors":{
-            "highlightLinkColor":"#ffffff",
-            "defaultLinkColor":"linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%) 10",
-            "labelColor":"#e6009b"
+    "x": {
+        "name": "@rittmang",
+        "link": "https://twitter.com/intent/user?screen_name=rittmang",
+        "verified": true,
+        "photo": "https://pbs.twimg.com/profile_images/1627417658504380416/jLinKKIE_400x400.jpg",
+        "colors": {
+            "background": "#000000",
+            "allText": "#ffffff",
+            "highlightLinkColor": "#1d99e5",
+            "defaultLinkColor": "#a9a9a9",
+            "labelColor": "#1d99e5",
+            "labelTextColor": "#ffffff"
+        },
+        "branded": false
+    },
+    "instagram": {
+        "name": "@rittmang_",
+        "link": "https://go.rightonrittman.in/instagram",
+        "colors": {
+            "highlightLinkColor": "#ffffff",
+            "defaultLinkColor": "linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%) 10",
+            "labelColor": "#e6009b"
         }
     },
-    "linkedin":{
-        "name":"Ritom Gupta",
-        "link":"https://go.rightonrittman.in/linkedin",
-        "photo":"https://pbs.twimg.com/profile_images/1627417658504380416/jLinKKIE_400x400.jpg",
-        "colors":{
-            "highlightLinkColor":"#0273b1",
-            "labelColor":"#457031"
+    "linkedin": {
+        "name": "Ritom Gupta",
+        "link": "https://go.rightonrittman.in/linkedin",
+        "photo": "https://pbs.twimg.com/profile_images/1627417658504380416/jLinKKIE_400x400.jpg",
+        "colors": {
+            "highlightLinkColor": "#0273b1",
+            "labelColor": "#457031"
         }
     },
     "usc": {
@@ -51,36 +66,36 @@
             "logoLink": "https://usc.edu"
         }
     },
-    "discord":{
-        "name":"@rittmang#9934",
-        "link":"https://go.rightonrittman.in/discord",
-        "verified":false,
-        "photo":"https://cdn.discordapp.com/avatars/1058285676199682118/528fcf8373cc9db5fccfcb6d81db0733.webp?size=240",
-        "colors":{
-            "background":"#313338",
-            "allText":"#ffffff",
-            "highlightLinkColor":"#5864f2",
-            "labelColor":"#5864f2"
+    "discord": {
+        "name": "@rittmang#9934",
+        "link": "https://go.rightonrittman.in/discord",
+        "verified": false,
+        "photo": "https://cdn.discordapp.com/avatars/1058285676199682118/528fcf8373cc9db5fccfcb6d81db0733.webp?size=240",
+        "colors": {
+            "background": "#313338",
+            "allText": "#ffffff",
+            "highlightLinkColor": "#5864f2",
+            "labelColor": "#5864f2"
         }
     },
-    "substack":{
-        "name":"Ritom Gupta",
-        "link":"https://go.rightonrittman.in/substack",
-        "verified":false,
-        "photo":"https://pbs.twimg.com/profile_images/1627417658504380416/jLinKKIE_400x400.jpg",
-        "colors":{
-            "background":"#000000",
-            "allText":"#ffffff",
-            "highlightLinkColor":"#ff6e23",
-            "labelColor":"#ff6e23"
+    "substack": {
+        "name": "Ritom Gupta",
+        "link": "https://go.rightonrittman.in/substack",
+        "verified": false,
+        "photo": "https://pbs.twimg.com/profile_images/1627417658504380416/jLinKKIE_400x400.jpg",
+        "colors": {
+            "background": "#000000",
+            "allText": "#ffffff",
+            "highlightLinkColor": "#ff6e23",
+            "labelColor": "#ff6e23"
         },
-        "branded":false
+        "branded": false
     },
-    "greylock":{
-        "name":"Ritom Gupta",
-        "link":"https://go.rightonrittman.in/home",
-        "verified":false,
-        "photo":"https://pbs.twimg.com/profile_images/1627417658504380416/jLinKKIE_400x400.jpg",
+    "greylock": {
+        "name": "Ritom Gupta",
+        "link": "https://go.rightonrittman.in/home",
+        "verified": false,
+        "photo": "https://pbs.twimg.com/profile_images/1627417658504380416/jLinKKIE_400x400.jpg",
         "colors": {
             "background": "#ffffff",
             "allText": "#000000",
@@ -89,12 +104,12 @@
             "labelColor": "#a9a9a9",
             "labelTextColor": "#ffffff"
         },
-        "branded":false
+        "branded": false
     },
-    "superbowl":{
-        "name":"Ritom 🏈",
-        "link":"https://twitter.com/intent/user?screen_name=rittmang",
-        "verified":true,
+    "superbowl": {
+        "name": "Ritom 🏈",
+        "link": "https://twitter.com/intent/user?screen_name=rittmang",
+        "verified": true,
         "colors": {
             "background": "#192f77",
             "allText": "#fefefe",

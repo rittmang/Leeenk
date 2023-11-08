@@ -122,10 +122,10 @@ function applyStyle(pagestyle) {
         link.style.borderWidth = "2px";
         link.style.borderRadius = "20px";
 
-        if(pagestyle.defaultLinkColor.startsWith("linear-gradient")){
+        if (pagestyle.defaultLinkColor.startsWith("linear-gradient")) {
             link.style.borderImage = pagestyle.defaultLinkColor;
         }
-        else{
+        else {
             link.style.borderColor = pagestyle.defaultLinkColor;
         }
     })
@@ -136,13 +136,16 @@ function applyStyle(pagestyle) {
     parentContainer.firstChild.style = "border: solid " + pagestyle.highlightLinkColor + " 2px; color: " + pagestyle.highlightLinkColor + "; font-weight:bolder;";
     document.getElementById('arrowhead').style = 'color: ' + pagestyle.highlightLinkColor + '; font-weight: bolder;';
     document.getElementById('label').style = 'font-size: xx-small;background-color: ' + pagestyle.labelColor + '; padding-left:5px; padding-right:5px; border-radius: 10px; vertical-align:middle; font-weight: bold; color: ' + pagestyle.labelTextColor + ';';
+
+    //modify dialogflow agent styles
+    document.querySelector('df-messenger').style = '--df-messenger-primary-color: ' + pagestyle.background + '; --df-messenger-chat-bubble-icon-color:' + pagestyle.highlightLinkColor + '; --df-messenger-titlebar-border: solid ' + pagestyle.defaultLinkColor + ' 1px;';
 }
 
 //main execution
 
 const urlParams = getAllUrlParams(window.location.href);
 const customOrder = (urlParams.order || "1").split(",");
-const prp = urlParams.prp;
+const prp = urlParams.p;
 const links = document.querySelectorAll('[data-id]');
 
 const pageElements = {
@@ -162,9 +165,9 @@ const pagestyle = {
     labelTextColor: '#ffffff'
 };
 
-if(urlParams.game === 'brickbreaker'){
+if (urlParams.game === 'brickbreaker') {
     var script = document.createElement('script');
-    script.onload = function(){
+    script.onload = function () {
         console.log('game loaded');
     }
     script.src = 'scripts/renderGameMode.js';

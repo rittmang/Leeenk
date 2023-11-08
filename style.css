@@ -140,7 +140,7 @@ footer {
     margin: 27px auto;
 }
 
-.link {
+#links .link {
     display: block;
     margin-bottom: 20px;
     padding: 17px;
@@ -151,6 +151,23 @@ footer {
     text-align: center;
     text-decoration: none;
     color: var(--color);
+    word-wrap: break-word;
+}
+
+#pin-link {
+    max-width: 90%;
+    width: auto;
+    display: block;
+    margin: 20px auto;
+}
+
+#pin-link .link {
+    display:block;
+    border-radius:100px;
+    border:dashed #ff0000 2px;
+    padding:10px;
+    text-align: center;
+    text-decoration: none;
     word-wrap: break-word;
 }
 

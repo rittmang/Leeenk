@@ -31,6 +31,17 @@
             visibility: hidden;
             opacity: 0;
         }
+
+        df-messenger {
+            z-index: 999;
+            position: fixed;
+            bottom: 16px;
+            right: 16px;
+            text-align: initial;
+            --df-messenger-primary-color: #1db954;
+            --df-messenger-chat-border-radius: 10px;
+            --df-messenger-font-family: 'Roboto Mono', monospace;
+        }
     </style>
 </head>
 
@@ -45,6 +56,10 @@
             <!-- <audio id="hoverSound">
                 <source src="sounds/stop-13692.mp3" type="audio/mpeg">
             </audio> -->
+            <!-- <div id="pin-link">
+                <a data-id="1" class="p-link" href="https://go.rightonrittman.in/youtube" target="_blank"
+                    style="border: solid #1db954 2px;">Meeting USC Startups - YouTube</a>
+            </div> -->
             <div id="links">
                 <a data-id="1" class="link" href="https://go.rightonrittman.in/converse" target="_blank"
                     style="border: solid #1db954 2px;">Schedule a chat</a>
@@ -62,6 +77,11 @@
                 ↑ Share with someone ↑
             </p>
             <br />
+            <df-messenger project-id="ritom-rorbot-xdur" agent-id="c269795b-8382-43be-b293-0d8849e900ad"
+                language-code="en">
+                <df-messenger-chat-bubble chat-title="Ask AI">
+                </df-messenger-chat-bubble>
+            </df-messenger>
             <footer>
                 <p id="footer-logo"></p>
                 ✧ Updated Apr 2023 ✧
@@ -73,6 +93,7 @@
     <script src="scripts/renderStyles.js"></script>
     <!-- <script src="scripts/renderGameMode.js"></script> -->
     <script src="scripts/share.js"></script>
+    <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
 </body>
 <script type="text/javascript">
     window.addEventListener('DOMContentLoaded', function () {

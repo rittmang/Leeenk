@@ -133,12 +133,42 @@ function applyStyle(pagestyle) {
     const parentContainer = document.getElementById("links");
 
     //TODO : highlightLinkColor should support gradients too
-    parentContainer.firstChild.style = "border: solid " + pagestyle.highlightLinkColor + " 2px; color: " + pagestyle.highlightLinkColor + "; font-weight:bolder;";
-    document.getElementById('arrowhead').style = 'color: ' + pagestyle.highlightLinkColor + '; font-weight: bolder;';
+    parentContainer.firstChild.style = "background-color:" + pagestyle.highlightLinkColor + "; border: solid " + pagestyle.highlightLinkColor + " 2px; color: " + pagestyle.labelTextColor + "; font-weight:bolder;";
+    document.getElementById('arrowhead').style = 'color: ' + pagestyle.labelTextColor + '; font-weight: bolder;';
     document.getElementById('label').style = 'font-size: xx-small;background-color: ' + pagestyle.labelColor + '; padding-left:5px; padding-right:5px; border-radius: 10px; vertical-align:middle; font-weight: bold; color: ' + pagestyle.labelTextColor + ';';
 
     //modify dialogflow agent styles
     document.querySelector('df-messenger').style = '--df-messenger-primary-color: ' + pagestyle.background + '; --df-messenger-chat-bubble-icon-color:' + pagestyle.highlightLinkColor + '; --df-messenger-titlebar-border: solid ' + pagestyle.defaultLinkColor + ' 1px;';
+}
+
+function updatePushDate() {
+    fetch('https://api.github.com/repos/rittmang/Leeenk')
+        .then(response => {
+            // Check if the response was successful
+            if (!response.ok) {
+                // If not successful, throw an error with the status
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Extract the 'pushed_at' field
+            const pushedAt = data.pushed_at;
+            // Convert the date string to a Date object
+            const date = new Date(pushedAt);
+            // Format the date to "Mon YYYY"
+            const options = { year: 'numeric', month: 'short' };
+            const formattedDate = date.toLocaleDateString('en-US', options);
+            // Update the div's content
+            const updateDateDiv = document.getElementById('update-date');
+            updateDateDiv.textContent = `✧ Updated ${formattedDate} ✧`;
+        })
+        .catch(error => {
+            // console.log("hello");
+            const updateDateDiv = document.getElementById('update-date');
+            updateDateDiv.textContent = `✧ Updated Nov 2023 ✧`;
+            // console.error('Error fetching the push date:', error);
+        });
 }
 
 //main execution
@@ -173,6 +203,8 @@ if (urlParams.game === 'brickbreaker') {
     script.src = 'scripts/renderGameMode.js';
     document.body.appendChild(script);
 }
+
+updatePushDate();
 
 fetch(dataUrl)
     .then(response => response.json())

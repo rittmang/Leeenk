@@ -75,7 +75,9 @@ const applyCustomOrder = (arr, desiredOrder) => {
     });
 }
 
-function sortLinks(customOrder, links, pagestyle) {
+function sortLinks(customOrder) {
+    var links = document.querySelectorAll('[data-id]');
+
     const parentContainer = document.getElementById("links");
     links = Array.from(links);
     applyCustomOrder(links, customOrder);
@@ -109,6 +111,17 @@ function updatePageElements(pageElements) {
         let p = document.getElementById("footer-logo");
         link.appendChild(img);
         p.appendChild(link);
+    }
+    if (pageElements.doNotDisplay) {
+        let links = Array.from(document.querySelectorAll('[data-id]'));
+        console.log(pageElements.doNotDisplay);
+        // Iterate over the links and remove the ones listed in doNotDisplay
+        links.forEach(function (link) {
+            let dataId = link.getAttribute('data-id');
+            if (pageElements.doNotDisplay.includes(parseInt(dataId))) {
+                link.remove();
+            }
+        });
     }
 }
 
@@ -176,14 +189,14 @@ function updatePushDate() {
 const urlParams = getAllUrlParams(window.location.href);
 const customOrder = (urlParams.order || "1").split(",");
 const prp = urlParams.p;
-const links = document.querySelectorAll('[data-id]');
 
 const pageElements = {
     name: 'Ritom',
     link: 'https://twitter.com/rittmang',
     verified: false,
     photo: 'img/avatar.jpg',
-    branded: false
+    branded: false,
+    doNotDisplay: []
 }
 
 const pagestyle = {
@@ -223,8 +236,9 @@ fetch(dataUrl)
             pageElements.link = prpData['link'] ? prpData['link'] : pageElements.link;
             pageElements.verified = prpData['verified'] ? prpData['verified'] : pageElements.verified;
             pageElements.branded = prpData['branded'] ? prpData['branded'] : pageElements.branded;
+            pageElements.doNotDisplay = prpData['doNotDisplay'] ? prpData['doNotDisplay'] : pageElements.doNotDisplay;
             updatePageElements(pageElements);
-            sortLinks(customOrder, links, pagestyle);
+            sortLinks(customOrder);
             applyStyle(pagestyle);
         } else {
             console.log("No PRP. Using default schemes.");

@@ -12,7 +12,10 @@
             "labelColor": "#1d99e5",
             "labelTextColor": "#ffffff"
         },
-        "branded": false
+        "branded": false,
+        "doNotDisplay": [
+            4
+        ]
     },
     "x": {
         "name": "@rittmang",
@@ -27,7 +30,10 @@
             "labelColor": "#1d99e5",
             "labelTextColor": "#ffffff"
         },
-        "branded": false
+        "branded": false,
+        "doNotDisplay": [
+            4
+        ]
     },
     "instagram": {
         "name": "@rittmang_",
@@ -37,7 +43,10 @@
             "highlightLinkColor": "#bc1888",
             "defaultLinkColor": "linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%) 10",
             "labelColor": "#e6009b"
-        }
+        },
+        "doNotDisplay": [
+            5
+        ]
     },
     "linkedin": {
         "name": "Ritom Gupta",
@@ -46,7 +55,10 @@
         "colors": {
             "highlightLinkColor": "#0273b1",
             "labelColor": "#457031"
-        }
+        },
+        "doNotDisplay": [
+            4
+        ]
     },
     "usc": {
         "name": "Hey, I'm Ritom ✌🏼",
@@ -65,7 +77,10 @@
             "logo": "img/usc.png",
             "logoSize": "8",
             "logoLink": "https://usc.edu"
-        }
+        },
+        "doNotDisplay": [
+            4
+        ]
     },
     "discord": {
         "name": "@rittmang#9934",
@@ -90,7 +105,10 @@
             "highlightLinkColor": "#ff6e23ee",
             "labelColor": "#ff6e23dd"
         },
-        "branded": false
+        "branded": false,
+        "doNotDisplay": [
+            4
+        ]
     },
     "greylock": {
         "name": "Ritom Gupta",

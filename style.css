@@ -41,6 +41,7 @@ body {
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    padding-top: 20px;
 }
 
 .content {
@@ -135,9 +136,21 @@ footer {
 
 #links {
     max-width: 90%;
-    width: auto;
+    width: 25%;
     display: block;
     margin: 27px auto;
+}
+
+@media only screen and (max-width: 767px) {
+    #links {
+        width: 80%;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    #links {
+        width: 50%;
+    }
 }
 
 #links .link {
@@ -154,6 +167,10 @@ footer {
     word-wrap: break-word;
 }
 
+#label {
+    white-space: nowrap;
+}
+
 #pin-link {
     max-width: 90%;
     width: auto;
@@ -162,10 +179,10 @@ footer {
 }
 
 #pin-link .link {
-    display:block;
-    border-radius:100px;
-    border:dashed #ff0000 2px;
-    padding:10px;
+    display: block;
+    border-radius: 100px;
+    border: dashed #ff0000 2px;
+    padding: 10px;
     text-align: center;
     text-decoration: none;
     word-wrap: break-word;

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stories</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        window.tailwind = window.tailwind || {};
+        window.tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+
+<body class="min-h-screen bg-[#f6f6f7] font-sans text-slate-900 antialiased">
+    <div id="page-container" class="mx-auto w-full max-w-2xl px-4 pb-16 pt-10 sm:px-6">
+        <main id="story-view" class="w-full" hidden>
+            <div class="mx-auto max-w-[38rem] text-left">
+                <h1 id="story-title" class="mb-6 text-left text-lg font-semibold text-slate-900 sm:text-xl"></h1>
+                <div id="story-body" class="space-y-5 text-[15px] leading-7 text-slate-600"></div>
+                <footer id="story-footer" class="mt-10 text-xs leading-6 text-slate-400"></footer>
+            </div>
+        </main>
+
+        <section id="story-list" hidden>
+            <div class="mb-8 text-center">
+                <h1 class="text-3xl font-semibold text-slate-900 sm:text-4xl">Stories</h1>
+            </div>
+            <div id="story-list-items" class="space-y-8"></div>
+        </section>
+    </div>
+
+    <script>
+        (function () {
+            var storyView = document.getElementById('story-view');
+            var storyTitle = document.getElementById('story-title');
+            var storyBody = document.getElementById('story-body');
+            var storyFooter = document.getElementById('story-footer');
+            var storyList = document.getElementById('story-list');
+            var storyListItems = document.getElementById('story-list-items');
+            var pageContainer = document.getElementById('page-container');
+            var listContainerClasses = 'mx-auto w-full max-w-2xl px-4 pb-16 pt-10 sm:px-6';
+            var storyContainerClasses = 'mx-auto w-full max-w-3xl px-6 pb-20 pt-20 sm:px-8 sm:pb-24 sm:pt-24';
+
+            function setBodyTheme(isStory) {
+                document.body.classList.toggle('bg-white', isStory);
+                document.body.classList.toggle('bg-[#f6f6f7]', !isStory);
+            }
+
+            function setContainerClasses(className) {
+                if (pageContainer) {
+                    pageContainer.className = className;
+                }
+            }
+
+            function getStoriesRoot() {
+                var path = window.location.pathname;
+                var segment = '/stories/';
+                if (path.indexOf(segment) !== -1) {
+                    return path.slice(0, path.indexOf(segment) + segment.length);
+                }
+                return '/stories/';
+            }
+
+            function normalizeSlug(value) {
+                return value
+                    .toLowerCase()
+                    .trim()
+                    .replace(/\.md$/, '')
+                    .replace(/\.html$/, '')
+                    .replace(/[^a-z0-9]+/g, '-')
+                    .replace(/^-+|-+$/g, '');
+            }
+
+            function getSlug() {
+                var params = new URLSearchParams(window.location.search);
+                var fromQuery = params.get('story') || params.get('s');
+                if (fromQuery) {
+                    return normalizeSlug(fromQuery);
+                }
+
+                var path = window.location.pathname;
+                var segment = '/stories/';
+                if (path.indexOf(segment) === -1) {
+                    return '';
+                }
+
+                var after = path.split(segment)[1] || '';
+                var cleaned = after.replace(/\/$/, '');
+                if (!cleaned || cleaned === 'index.html') {
+                    return '';
+                }
+
+                return normalizeSlug(cleaned);
+            }
+
+            function parseStory(markdown) {
+                var lines = markdown.replace(/\r\n/g, '\n').split('\n');
+                var title = '';
+                var bodyLines = [];
+
+                for (var i = 0; i < lines.length; i += 1) {
+                    var trimmed = lines[i].trim();
+
+                    if (!title && trimmed.indexOf('# ') === 0) {
+                        title = trimmed.replace(/^#\s+/, '').trim();
+                        continue;
+                    }
+
+                    bodyLines.push(lines[i]);
+                }
+
+                return {
+                    title: title,
+                    body: bodyLines.join('\n').trim()
+                };
+            }
+
+            function clearElement(element) {
+                while (element.firstChild) {
+                    element.removeChild(element.firstChild);
+                }
+            }
+
+            function renderMarkdown(container, markdown) {
+                clearElement(container);
+                if (!markdown) {
+                    return;
+                }
+
+                container.innerHTML = marked.parse(markdown);
+                applyMarkdownClasses(container);
+            }
+
+            function applyMarkdownClasses(container) {
+                var paragraphs = container.querySelectorAll('p');
+                for (var i = 0; i < paragraphs.length; i += 1) {
+                    paragraphs[i].className = 'text-[15px] leading-7 text-slate-600';
+                }
+
+                var blockquotes = container.querySelectorAll('blockquote');
+                for (var j = 0; j < blockquotes.length; j += 1) {
+                    blockquotes[j].className = 'my-4 border-l-4 border-slate-200 pl-4 text-[15px] italic leading-7 text-slate-500';
+                }
+
+                var lists = container.querySelectorAll('ul, ol');
+                for (var k = 0; k < lists.length; k += 1) {
+                    var list = lists[k];
+                    list.className = (list.tagName === 'OL')
+                        ? 'my-4 list-decimal pl-6 text-[15px] leading-7 text-slate-600'
+                        : 'my-4 list-disc pl-6 text-[15px] leading-7 text-slate-600';
+                }
+
+                var listItems = container.querySelectorAll('li');
+                for (var l = 0; l < listItems.length; l += 1) {
+                    listItems[l].className = 'mb-2';
+                }
+
+                var links = container.querySelectorAll('a');
+                for (var m = 0; m < links.length; m += 1) {
+                    links[m].className = 'text-slate-700 underline';
+                }
+
+                var headings = container.querySelectorAll('h2, h3, h4');
+                for (var n = 0; n < headings.length; n += 1) {
+                    headings[n].className = 'mt-6 text-base font-semibold text-slate-900';
+                }
+
+                var hrs = container.querySelectorAll('hr');
+                for (var o = 0; o < hrs.length; o += 1) {
+                    hrs[o].className = 'my-8 border-slate-200';
+                }
+
+                var codes = container.querySelectorAll('code');
+                for (var p = 0; p < codes.length; p += 1) {
+                    codes[p].className = 'rounded bg-slate-100 px-1 py-0.5 text-[13px] text-slate-600';
+                }
+            }
+
+            function renderFooter(footerText, title) {
+                clearElement(storyFooter);
+                var processed = footerText.replace(/\{\{title\}\}/g, title);
+                storyFooter.innerHTML = marked.parse(processed);
+
+                var paragraphs = storyFooter.querySelectorAll('p');
+                for (var i = 0; i < paragraphs.length; i += 1) {
+                    paragraphs[i].className = 'text-xs text-slate-400';
+                }
+
+                var divider = storyFooter.querySelectorAll('hr');
+                for (var j = 0; j < divider.length; j += 1) {
+                    divider[j].className = 'my-8 border-slate-200';
+                }
+            }
+
+            function renderError(message) {
+                var error = document.createElement('p');
+                error.className = 'mt-4 text-sm text-rose-600';
+                error.textContent = message;
+                storyBody.appendChild(error);
+            }
+
+            function slugFromStory(story) {
+                if (story && story.url) {
+                    var match = story.url.match(/\/stories\/([^/?#]+)/);
+                    if (match && match[1]) {
+                        return normalizeSlug(match[1]);
+                    }
+                }
+
+                return normalizeSlug(story.title || '');
+            }
+
+            function renderStoryList(stories, baseUrl) {
+                clearElement(storyListItems);
+
+                for (var i = 0; i < stories.length; i += 1) {
+                    var story = stories[i];
+                    var slug = slugFromStory(story);
+                    if (!slug) {
+                        continue;
+                    }
+
+                    var href = new URL('index.html', baseUrl).toString() + '?story=' + encodeURIComponent(slug);
+                    var card = buildStoryCard(story, href, i);
+                    storyListItems.appendChild(card);
+                }
+            }
+
+            function buildStoryCard(story, href, index) {
+                var link = document.createElement('a');
+                link.href = href;
+                link.className = 'group block transition-all duration-200 ease-in-out';
+                link.setAttribute('aria-label', 'Read ' + (story.title || 'story'));
+
+                var isFeatured = index === 0 && story.image;
+
+                if (isFeatured) {
+                    var featured = document.createElement('div');
+                    featured.className = 'relative h-64 overflow-hidden rounded-2xl bg-slate-200 shadow-sm sm:h-72';
+
+                    var background = document.createElement('div');
+                    background.className = 'absolute inset-0 bg-cover bg-center';
+                    background.style.backgroundImage = 'url(' + story.image + ')';
+                    background.style.filter = 'grayscale(1)';
+                    featured.appendChild(background);
+
+                    var overlay = document.createElement('div');
+                    overlay.className = 'absolute inset-0 bg-black/35';
+                    featured.appendChild(overlay);
+
+                    var content = document.createElement('div');
+                    content.className = 'absolute inset-0 flex flex-col items-center justify-center px-6 text-center';
+
+                    if (story.category) {
+                        var category = document.createElement('div');
+                        category.className = 'text-[10px] font-medium uppercase tracking-[0.4em] text-white/70';
+                        category.textContent = story.category;
+                        content.appendChild(category);
+                    }
+
+                    var title = document.createElement('div');
+                    title.className = 'mt-2 text-2xl font-semibold text-white sm:text-3xl';
+                    title.textContent = story.title || 'Untitled';
+                    content.appendChild(title);
+
+                    var button = document.createElement('span');
+                    button.className = 'mt-5 inline-flex items-center rounded-md bg-white/90 px-6 py-2 text-sm font-medium text-slate-800 shadow-sm';
+                    button.textContent = 'Read';
+                    content.appendChild(button);
+
+                    featured.appendChild(content);
+                    link.appendChild(featured);
+                    return link;
+                }
+
+                var card = document.createElement('div');
+                card.className = 'rounded-2xl bg-white px-8 py-10 text-center shadow-sm';
+
+                if (story.category) {
+                    var label = document.createElement('div');
+                    label.className = 'text-[10px] font-medium uppercase tracking-[0.35em] text-slate-400';
+                    label.textContent = story.category;
+                    card.appendChild(label);
+                }
+
+                var heading = document.createElement('div');
+                heading.className = 'mt-2 text-2xl font-semibold text-slate-900';
+                heading.textContent = story.title || 'Untitled';
+                card.appendChild(heading);
+
+                var summary = story.summary || story.description || '';
+                if (summary) {
+                    var detail = document.createElement('p');
+                    detail.className = 'mt-3 text-sm leading-6 text-slate-500';
+                    detail.textContent = summary;
+                    card.appendChild(detail);
+                }
+
+                var readButton = document.createElement('span');
+                readButton.className = 'mt-8 inline-flex items-center rounded-md bg-slate-100 px-6 py-2 text-sm font-medium text-slate-600';
+                readButton.textContent = 'Read';
+                card.appendChild(readButton);
+
+                link.appendChild(card);
+                return link;
+            }
+
+            function showList() {
+                storyList.hidden = false;
+                storyView.hidden = true;
+                setBodyTheme(false);
+                setContainerClasses(listContainerClasses);
+            }
+
+            function showStory() {
+                storyList.hidden = true;
+                storyView.hidden = false;
+                setBodyTheme(true);
+                setContainerClasses(storyContainerClasses);
+            }
+
+            function renderPage() {
+                var slug = getSlug();
+                var baseUrl = new URL(getStoriesRoot(), window.location.origin);
+
+                fetch(new URL('index.json', baseUrl))
+                    .then(function (response) {
+                        if (!response.ok) {
+                            throw new Error('Could not load story index.');
+                        }
+                        return response.json();
+                    })
+                    .then(function (stories) {
+                        if (!slug) {
+                            renderStoryList(stories, baseUrl);
+                            showList();
+                            return null;
+                        }
+
+                        return Promise.all([
+                            fetch(new URL(slug + '.md', baseUrl)),
+                            fetch(new URL('footer.md', baseUrl))
+                        ]).then(function (responses) {
+                            if (!responses[0].ok) {
+                                throw new Error('Story not found: ' + slug);
+                            }
+                            if (!responses[1].ok) {
+                                throw new Error('Footer template not found.');
+                            }
+                            return Promise.all([responses[0].text(), responses[1].text()]);
+                        }).then(function (texts) {
+                            var story = parseStory(texts[0]);
+                            var title = story.title || (stories.find(function (item) {
+                                return slugFromStory(item) === slug;
+                            }) || {}).title || 'Story';
+
+                            storyTitle.textContent = title;
+                            document.title = title + ' | Stories';
+                            renderMarkdown(storyBody, story.body);
+                            renderFooter(texts[1], title);
+                            showStory();
+                            return null;
+                        });
+                    })
+                    .catch(function (error) {
+                        showStory();
+                        storyTitle.textContent = 'Story';
+                        renderError(error.message || 'Unable to render story.');
+                    });
+            }
+
+            renderPage();
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" style="--page-bg:#000000; --text-color:#ffffff; --label-bg:#1db954; --label-text:#ffffff;">
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <meta name="robots" content="index,follow" />
     <title>Ritom</title>
-    <link rel="stylesheet" href="style.css">
     <link id="favicon" rel="shortcut icon" href="img/avatar.jpg" type="image/jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        mono: ['"Roboto Mono"', 'monospace']
+                    }
+                }
+            }
+        };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script type="text/javascript">
         (function (c, l, a, r, i, t, y) {
             c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
@@ -26,81 +42,78 @@
         gtag('config', 'G-N43L1VT7RB');
     </script>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
-    <style>
-        body {
-            visibility: hidden;
-            opacity: 0;
-        }
-
-        df-messenger {
-            z-index: 999;
-            position: fixed;
-            bottom: 16px;
-            right: 16px;
-            text-align: initial;
-            --df-messenger-primary-color: #1db954;
-            --df-messenger-chat-border-radius: 10px;
-            --df-messenger-font-family: 'Roboto Mono', monospace;
-        }
-    </style>
 </head>
 
-<body id="body">
-    <div class="container">
-        <div class="content">
-            <a id="shadow-link" href="https://go.rightonrittman.in/twitter" class="shadow"><img id="userPhoto"
-                    src="img/avatar.jpg" alt="User Photo"></a>
+<body id="body"
+    class="min-h-screen bg-[color:var(--page-bg)] text-[color:var(--text-color)] font-mono antialiased flex flex-col items-center opacity-0 invisible transition-opacity duration-300">
+    <main class="flex-1 w-full flex flex-col items-center justify-center text-center px-4 py-8">
+        <a id="shadow-link" href="https://go.rightonrittman.in/twitter"
+            class="group relative inline-flex items-center justify-center">
+            <span
+                class="relative inline-flex items-center justify-center rounded-full p-[3px] bg-gradient-to-br from-neutral-900 via-neutral-500 to-neutral-900 shadow-[0_0_28px_rgba(0,0,0,0.45)]">
+                <span class="rounded-full bg-[color:var(--page-bg)] p-[2px]">
+                    <img id="userPhoto" src="img/avatar.jpg" alt="User Photo"
+                        class="h-24 w-24 rounded-full object-cover">
+                </span>
+            </span>
+        </a>
 
-            <h1><a href="https://go.rightonrittman.in/twitter" id="userName" rel="noopener" target="_blank"
-                    style="font-weight: bold;">Ritom</a></h1>
-            <!-- <audio id="hoverSound">
-                <source src="sounds/stop-13692.mp3" type="audio/mpeg">
-            </audio> -->
-            <!-- <div id="pin-link">
-                <a data-id="1" class="p-link" href="https://go.rightonrittman.in/youtube" target="_blank"
-                    style="border: solid #1db954 2px;">Meeting USC Startups - YouTube</a>
-            </div> -->
-            <div id="links">
-                <a data-id="1" class="link" href="https://go.rightonrittman.in/converse" target="_blank"
-                    style="border: solid #1db954 2px;">Let's talk</a>
-                <a data-id="2" class="link" href="https://go.rightonrittman.in/home" target="_blank"
-                    style="border: solid #a9a9a9 2px;">Tech Career <span id="label"
-                        style="font-size: xx-small;background-color: #1db954; padding-left:5px; padding-right:5px; border-radius: 10px; vertical-align:middle; font-weight: bold; color: white;">Hire
-                        me</span> </a>
-                <a data-id="3" class="link" href="https://go.rightonrittman.in/linkedin" target="_blank"
-                    style="border: solid #a9a9a9 2px;">LinkedIn</a>
-                <a data-id="4" class="link" href="https://go.rightonrittman.in/playlist/bollywood-roadtrip"
-                    target="_blank" style="border: solid #a9a9a9 2px;">Bollywood Roadtrip Playlist 🚗</a>
-                <a data-id="5" class="link" href="https://go.rightonrittman.in/playlist/focus" target="_blank"
-                    style="border: solid #a9a9a9 2px;">My Focus Playlist 🎧</a>
-                <!-- <a class="link" style="border: dashed gray 2px; -webkit-user-select: none; -ms-user-select: none; user-select: none;">Coming soon on Apple Music</a> -->
-            </div>
-            <p class="share-button">
-                ↑ Share with someone ↑
-            </p>
-            <br />
-            <!-- <df-messenger project-id="ritom-rorbot-xdur" agent-id="c269795b-8382-43be-b293-0d8849e900ad"
-                language-code="en">
-                <df-messenger-chat-bubble chat-title="Ask AI">
-                </df-messenger-chat-bubble>
-            </df-messenger> -->
-            <footer>
-                <p id="footer-logo"></p>
-                <div id="update-date">✧ Updated Apr 2023 ✧</div>
-                <br />
-                <br />
-            </footer>
+        <h1 class="mt-5 text-2xl md:text-3xl font-bold tracking-tight leading-tight">
+            <a href="https://go.rightonrittman.in/twitter" id="userName" rel="noopener" target="_blank"
+                class="inline-flex items-center justify-center gap-2 text-[color:var(--text-color)]">Ritom</a>
+        </h1>
+
+        <div id="links" class="mt-7 w-[90%] sm:w-[80%] md:w-1/2 lg:w-1/4 max-w-[480px] space-y-5">
+            <a data-id="1" class="js-link link flex items-center justify-center gap-2 rounded-[20px] border-2 border-solid
+                border-[color:var(--link-border)] bg-[color:var(--link-bg)] text-[color:var(--link-text)] px-[17px] py-[17px]
+                text-base font-medium"
+                href="https://go.rightonrittman.in/converse" target="_blank"
+                style="--link-bg:#1db954; --link-text:#ffffff; --link-border:#1db954;">Let's talk</a>
+            <a data-id="2" class="js-link link flex items-center justify-center gap-2 rounded-[20px] border-2 border-solid
+                border-[color:var(--link-border)] bg-[color:var(--link-bg)] text-[color:var(--link-text)] px-[17px] py-[17px]
+                text-base font-medium"
+                href="https://go.rightonrittman.in/home" target="_blank"
+                style="--link-bg: transparent; --link-text: var(--text-color); --link-border:#a9a9a9;">Tech Career
+                <span id="label"
+                    class="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-bold bg-[color:var(--label-bg)] text-[color:var(--label-text)]">Hire
+                    me</span>
+            </a>
+            <a data-id="3" class="js-link link flex items-center justify-center gap-2 rounded-[20px] border-2 border-solid
+                border-[color:var(--link-border)] bg-[color:var(--link-bg)] text-[color:var(--link-text)] px-[17px] py-[17px]
+                text-base font-medium"
+                href="https://go.rightonrittman.in/linkedin" target="_blank"
+                style="--link-bg: transparent; --link-text: var(--text-color); --link-border:#a9a9a9;">LinkedIn</a>
+            <a data-id="4" class="js-link link flex items-center justify-center gap-2 rounded-[20px] border-2 border-solid
+                border-[color:var(--link-border)] bg-[color:var(--link-bg)] text-[color:var(--link-text)] px-[17px] py-[17px]
+                text-base font-medium"
+                href="https://go.rightonrittman.in/playlist/bollywood-roadtrip" target="_blank"
+                style="--link-bg: transparent; --link-text: var(--text-color); --link-border:#a9a9a9;">Bollywood
+                Roadtrip Playlist 🚗</a>
+            <a data-id="5" class="js-link link flex items-center justify-center gap-2 rounded-[20px] border-2 border-solid
+                border-[color:var(--link-border)] bg-[color:var(--link-bg)] text-[color:var(--link-text)] px-[17px] py-[17px]
+                text-base font-medium"
+                href="https://go.rightonrittman.in/playlist/focus" target="_blank"
+                style="--link-bg: transparent; --link-text: var(--text-color); --link-border:#a9a9a9;">My Focus Playlist
+                🎧</a>
         </div>
-    </div>
-    <script src="scripts/renderStyles.js"></script>
+
+        <button type="button" class="share-button mt-8 text-sm opacity-70 cursor-pointer bg-transparent border-0 p-0">
+            ↑ Share with someone ↑
+        </button>
+
+        <footer class="mt-10 flex flex-col items-center gap-3 text-xs opacity-40">
+            <div id="footer-logo" class="flex items-center justify-center"></div>
+            <div id="update-date">✧ Updated Apr 2023 ✧</div>
+        </footer>
+    </main>
+    <script src="scripts/renderStylesTailwind.js"></script>
     <!-- <script src="scripts/renderGameMode.js"></script> -->
     <script src="scripts/share.js"></script>
     <!-- <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script> -->
 </body>
 <script type="text/javascript">
     window.addEventListener('DOMContentLoaded', function () {
-        document.body.style.visibility = 'visible';
-        document.body.style.opacity = 1;
+        document.body.classList.remove('opacity-0', 'invisible');
     });
 </script>
 

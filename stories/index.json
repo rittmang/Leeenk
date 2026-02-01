@@ -1,0 +1,37 @@
+[
+  {
+    "title": "The Pair",
+    "category": "Short Story",
+    "image": "stories/images/the-pair.jpg",
+    "url": "/stories/the-pair",
+    "summary": "A sibling confessional about secrets, creatures, and growing up."
+  },
+  {
+    "title": "The Ding Dong",
+    "category": "Short Story",
+    "image": "stories/images/the-ding-dong.jpg",
+    "url": "/stories/the-ding-dong",
+    "summary": "Detective Aldric gets called to search for a missing bell. Incidents follow."
+  },
+  {
+    "title": "A Fishing Expedition",
+    "category": "Short Story",
+    "image": "stories/images/a-fishing-expedition.jpg",
+    "url": "/stories/a-fishing-expedition",
+    "summary": "Two friends go fishing, but goof it up..."
+  },
+  {
+    "title": "Just Toying",
+    "category": "Short Story",
+    "image": "stories/images/just-toying.jpg",
+    "url": "/stories/just-toying",
+    "summary": "A toy horse becomes antimatter, but escapes annihilation."
+  },
+  {
+    "title": "The Presence",
+    "category": "Short Story",
+    "image": "stories/images/the-presence.jpg",
+    "url": "/stories/the-presence",
+    "summary": "Two friends arrive at a cemetery, only to reveal an astonishing secret."
+  }
+]
